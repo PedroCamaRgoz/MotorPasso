@@ -1,4 +1,4 @@
-# *Motor de Passo
+# Motor de Passo
 
 # Equipe 
 
