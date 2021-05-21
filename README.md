@@ -1,8 +1,8 @@
-# Motor de Passo
+# *Motor de Passo
 
 # Equipe 
 
-* **Pedro**
+* Pedro
 * Lucas
 * Pablo
 * Suzan 
