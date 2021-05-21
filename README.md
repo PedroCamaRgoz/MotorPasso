@@ -2,7 +2,7 @@
 
 # Equipe 
 
-* *Pedro
+* **Pedro**
 * Lucas
 * Pablo
 * Suzan 
