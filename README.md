@@ -1,6 +1,6 @@
 # MotorPasso
 
-#Equipe
+# Equipe
 
 * Pedro
 * Lucas
