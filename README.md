@@ -1,12 +1,12 @@
 # Motor de Passo
 
-# Equipe :
+# **Equipe** 
 
 * Pedro
 * Lucas
 * Pablo
 * Suzan 
 
-# Objetivo : 
+# Objetivo 
 
 Construir uma biblioteca para acionamento do motor de passo 
