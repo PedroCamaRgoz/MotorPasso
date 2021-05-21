@@ -9,4 +9,4 @@
 
 # Objetivo 
 
-Contruir uma biblioteca para acionamento do motor de passo 
+Construir uma biblioteca para acionamento do motor de passo 
