@@ -1,5 +1,35 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
+"5 ./passoMOTOR.h
+[; ;./passoMOTOR.h: 5: void motor_init(void);
+[v _motor_init `(v ~T0 @X0 0 ef ]
+"4
+[; ;./passoMOTOR.h: 4: void motor(int pulsos, int sentido);
+[v _motor `(v ~T0 @X0 0 ef2`i`i ]
+"5 ./config.h
+[p x FOSC = INTRC_NOCLKOUT ]
+"6
+[p x WDTE = OFF ]
+"7
+[p x PWRTE = OFF ]
+"8
+[p x MCLRE = OFF ]
+"9
+[p x CP = OFF ]
+"10
+[p x CPD = OFF ]
+"11
+[p x BOREN = OFF ]
+"12
+[p x IESO = OFF ]
+"13
+[p x FCMEN = OFF ]
+"14
+[p x LVP = OFF ]
+"17
+[p x BOR4V = BOR40V ]
+"18
+[p x WRT = OFF ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -235,15 +265,45 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
 [v $root$_main `(v ~T0 @X0 0 e ]
-"11 main.c
-[; ;main.c: 11: void main(void)
+"13 main.c
+[; ;main.c: 13: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"12
-[; ;main.c: 12: {
+"14
+[; ;main.c: 14: {
 {
 [e :U _main ]
 [f ]
-"14
-[; ;main.c: 14: }
+"15
+[; ;main.c: 15:     motor_init();
+[e ( _motor_init ..  ]
+"17
+[; ;main.c: 17:     while( 1 )
+[e :U 140 ]
+"18
+[; ;main.c: 18:     {
+{
+"19
+[; ;main.c: 19:         motor(32, 1);
+[e ( _motor (2 , -> 32 `i -> 1 `i ]
+"20
+[; ;main.c: 20:         motor(32, 0);
+[e ( _motor (2 , -> 32 `i -> 0 `i ]
+"21
+[; ;main.c: 21:         motor(32, 1);
+[e ( _motor (2 , -> 32 `i -> 1 `i ]
+"22
+[; ;main.c: 22:         motor(32, 0);
+[e ( _motor (2 , -> 32 `i -> 0 `i ]
+"23
+[; ;main.c: 23:     }
+}
+[e :U 139 ]
+[e $U 140  ]
+[e :U 141 ]
+"24
+[; ;main.c: 24:     return;
+[e $UE 138  ]
+"26
+[; ;main.c: 26: }
 [e :UE 138 ]
 }

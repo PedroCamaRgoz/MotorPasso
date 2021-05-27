@@ -1,22 +1,26 @@
 /*
  * File:   main.c
- * Author: 20187263
+ * Author: 20190224
  *
- * Created on 21 de Maio de 2021, 16:02
+ * Created on 27 de Maio de 2021, 13:36
  */
 
 #include "config.h"
-#include <xc.h>
 #include "delay.h"
-#include "dispLCD4vias.h"
-#include "keyboard4x4.h"
+#include "passoMOTOR.h"
+#include <xc.h>
 
-
-void main(void)
+void main(void) 
 {
+    motor_init();
     
     while( 1 )
     {
-    
+        motor(32, 1);
+        motor(32, 0);
+        motor(32, 1);
+        motor(32, 0); 
     }
+    return;
+
 }
