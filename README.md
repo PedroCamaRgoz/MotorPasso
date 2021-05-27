@@ -1,6 +1,6 @@
 # Motor de Passo
 
-# Equipe
+# Equipe 
 
 * Pedro
 * Lucas

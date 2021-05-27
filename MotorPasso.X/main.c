@@ -6,12 +6,23 @@
  */
 
 #include "config.h"
-#include "delay.h"
-#include "passoMOTOR.h"
 #include <xc.h>
+#include "passoMOTOR.h"
+#include "dispLCD4vias.h"
+#include "keyboard4x4.h"
+#include "stepMotor.h"
+#include "delay.h"
+
+//                       **** INSTRUÇÕES ******
+//
+// Adicione as  funções no while : passocompleto, passoduplo e meiopasso
+// caso 1 : caso adicione mais de um função para o motor é recomendavel o uso de delay.
+// case 2 : limite de valor na variavel graus é 360.
+
 
 void main(void) 
 {
+
     motor_init();
     
     while( 1 )
@@ -19,7 +30,11 @@ void main(void)
      
         
         
+
+    motorpasso_init(8);
+      
     }
+
     return;
 
 }
