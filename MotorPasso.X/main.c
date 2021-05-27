@@ -16,10 +16,9 @@ void main(void)
     
     while( 1 )
     {
-        motor(32, 1);
-        motor(32, 0);
-        motor(32, 1);
-        motor(32, 0); 
+     
+        
+        
     }
     return;
 
