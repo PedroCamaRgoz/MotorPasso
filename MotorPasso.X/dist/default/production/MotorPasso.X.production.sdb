@@ -5,8 +5,6 @@
 [d frameptr 6 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\Umul8_16.c
@@ -15,60 +13,54 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"93 C:\Users\20187263\MPLABXProjects\MotorPasso.X\dispLCD4vias.c
-[v _dispLCD_instReg dispLCD_instReg `(v  1 e 1 0 ]
-"128
-[v _dispLCD_dataReg dispLCD_dataReg `(v  1 e 1 0 ]
-"144
-[v _dispLCD_lincol dispLCD_lincol `(v  1 e 1 0 ]
-"11 C:\Users\20187263\MPLABXProjects\MotorPasso.X\main.c
+"13 C:\Users\20190224\MPLABXProjects\MotorPasso\MotorPasso.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"228 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h
-[v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S113 . 1 `uc 1 PS 1 0 :3:0 
-`uc 1 PSA 1 0 :1:3 
-`uc 1 T0SE 1 0 :1:4 
-`uc 1 T0CS 1 0 :1:5 
-`uc 1 INTEDG 1 0 :1:6 
-`uc 1 nRBPU 1 0 :1:7 
-]
-"1366
-[s S120 . 1 `uc 1 PS0 1 0 :1:0 
-`uc 1 PS1 1 0 :1:1 
-`uc 1 PS2 1 0 :1:2 
-]
-[u S124 . 1 `S113 1 . 1 0 `S120 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES124  1 e 1 @129 ]
-"1478
-[v _TRISB TRISB `VEuc  1 e 1 @134 ]
-[s S44 . 1 `uc 1 TRISD0 1 0 :1:0 
-`uc 1 TRISD1 1 0 :1:1 
-`uc 1 TRISD2 1 0 :1:2 
-`uc 1 TRISD3 1 0 :1:3 
-`uc 1 TRISD4 1 0 :1:4 
-`uc 1 TRISD5 1 0 :1:5 
-`uc 1 TRISD6 1 0 :1:6 
-`uc 1 TRISD7 1 0 :1:7 
-]
-"1619
-[u S53 . 1 `S44 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES53  1 e 1 @136 ]
-"2346
-[v _WPUB WPUB `VEuc  1 e 1 @149 ]
+"12 C:\Users\20190224\MPLABXProjects\MotorPasso\MotorPasso.X\passoMOTOR.c
+[v _motor_init motor_init `(v  1 e 1 0 ]
+"21
+[v _motor motor `(v  1 e 1 0 ]
+"352 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"1602
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "3449
 [v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
-[s S35 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 RS 1 0 :1:2 
-`uc 1 EN 1 0 :1:3 
-`uc 1 BUS 1 0 :4:4 
-]
-"47 C:\Users\20187263\MPLABXProjects\MotorPasso.X\dispLCD4vias.c
-[u S40 . 1 `S35 1 . 1 0 ]
-[v _LCDbits LCDbits `VES40  1 e 1 @8 ]
-"22 C:\Users\20187263\MPLABXProjects\MotorPasso.X\keyboard4x4.c
-[v _tecladoMatriz tecladoMatriz `[4][4]uc  1 e 16 0 ]
-"11 C:\Users\20187263\MPLABXProjects\MotorPasso.X\main.c
+"13 C:\Users\20190224\MPLABXProjects\MotorPasso\MotorPasso.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"14
+"26
+} 0
+"12 C:\Users\20190224\MPLABXProjects\MotorPasso\MotorPasso.X\passoMOTOR.c
+[v _motor_init motor_init `(v  1 e 1 0 ]
+{
+"17
+} 0
+"21
+[v _motor motor `(v  1 e 1 0 ]
+{
+"45
+[v motor@i_57 i `uc  1 a 1 3 ]
+"31
+[v motor@i i `uc  1 a 1 2 ]
+"25
+[v motor@n n `i  1 a 2 6 ]
+"24
+[v motor@z z `i  1 a 2 4 ]
+"21
+[v motor@pulsos pulsos `i  1 p 2 9 ]
+[v motor@sentido sentido `i  1 p 2 11 ]
+"55
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
 } 0

@@ -1,32 +1,40 @@
 /*
  * File:   main.c
- * Author: 20187263
+ * Author: 20190224
  *
- * Created on 21 de Maio de 2021, 16:02
+ * Created on 27 de Maio de 2021, 13:36
  */
 
 #include "config.h"
 #include <xc.h>
-#include "delay.h"
+#include "passoMOTOR.h"
 #include "dispLCD4vias.h"
 #include "keyboard4x4.h"
 #include "stepMotor.h"
+#include "delay.h"
 
-//                       **** INSTRUÇÕES ******
+//                       **** INSTRUÃ‡Ã•ES ******
 //
-// Adicione as  funções no while : passocompleto, passoduplo e meiopasso
-// caso 1 : caso adicione mais de um função para o motor é recomendavel o uso de delay.
-// case 2 : limite de valor na variavel graus é 360.
+// Adicione as  funÃ§Ãµes no while : passocompleto, passoduplo e meiopasso
+// caso 1 : caso adicione mais de um funÃ§Ã£o para o motor Ã© recomendavel o uso de delay.
+// case 2 : limite de valor na variavel graus Ã© 360.
 
-void main(void)
+
+void main(void) 
 {
-    motorpasso_init(8);
-            
+
+    motor_init();
+    
     while( 1 )
     {
+     
         
- 
-             
-    
+        
+
+    motorpasso_init(8);
+      
     }
+
+    return;
+
 }

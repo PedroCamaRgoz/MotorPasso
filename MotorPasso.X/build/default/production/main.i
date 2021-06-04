@@ -14,6 +14,43 @@
 
 
 
+# 1 "./config.h" 1
+
+
+
+
+#pragma config FOSC = INTRC_NOCLKOUT
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config MCLRE = OFF
+#pragma config CP = OFF
+#pragma config CPD = OFF
+#pragma config BOREN = OFF
+#pragma config IESO = OFF
+#pragma config FCMEN = OFF
+#pragma config LVP = OFF
+
+
+#pragma config BOR4V = BOR40V
+#pragma config WRT = OFF
+# 8 "main.c" 2
+
+# 1 "./delay.h" 1
+
+
+
+
+
+void delay (int t );
+# 9 "main.c" 2
+
+# 1 "./passoMOTOR.h" 1
+
+
+
+void motor(int pulsos, int sentido);
+void motor_init(void);
+# 10 "main.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 3
@@ -2499,10 +2536,20 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 2 3
-# 9 "main.c" 2
+# 11 "main.c" 2
 
 
 void main(void)
 {
+    motor_init();
+
+    while( 1 )
+    {
+        motor(32, 1);
+        motor(32, 0);
+        motor(32, 1);
+        motor(32, 0);
+    }
+    return;
 
 }

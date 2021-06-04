@@ -1,4 +1,4 @@
-# 1 "dispLCD4vias.c"
+# 1 "passoMOTOR.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,44 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "dispLCD4vias.c" 2
-# 23 "dispLCD4vias.c"
+# 1 "passoMOTOR.c" 2
+
+
+
+
+
+
+
+# 1 "./config.h" 1
+
+
+
+
+#pragma config FOSC = INTRC_NOCLKOUT
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config MCLRE = OFF
+#pragma config CP = OFF
+#pragma config CPD = OFF
+#pragma config BOREN = OFF
+#pragma config IESO = OFF
+#pragma config FCMEN = OFF
+#pragma config LVP = OFF
+
+
+#pragma config BOR4V = BOR40V
+#pragma config WRT = OFF
+# 8 "passoMOTOR.c" 2
+
+# 1 "./delay.h" 1
+
+
+
+
+
+void delay (int t );
+# 9 "passoMOTOR.c" 2
+
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2492,178 +2528,50 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 2 3
-# 23 "dispLCD4vias.c" 2
-
-# 1 "./config.h" 1
+# 10 "passoMOTOR.c" 2
 
 
-
-
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-# 24 "dispLCD4vias.c" 2
-# 36 "dispLCD4vias.c"
-typedef union
+void motor_init(void)
 {
-    struct
-    {
-        unsigned char :2;
-        unsigned char RS :1;
-        unsigned char EN :1;
-        unsigned char BUS :4;
-    };
-} LCDbits_t;
+        ANSELH = 0;
+        TRISD= 0x00;
+        PORTD = 0x00;
+}
 
-volatile LCDbits_t LCDbits __attribute__((address(0x008)));
-# 93 "dispLCD4vias.c"
-void dispLCD_instReg( unsigned char i )
+
+
+void motor(int pulsos, int sentido)
 {
-    LCDbits.RS = 0;
-    LCDbits.BUS = (i>>4);
+    pulsos = pulsos / 4;
+    int z;
+    int n;
 
-    LCDbits.EN = 0;
-    if( i == 0x01 || i == 0x02 )
-        _delay((unsigned long)((2)*(4000000/4000.0)));
-    else
-        _delay((unsigned long)((40)*(4000000/4000000.0)));
-    LCDbits.EN = 1;
-
-
-
-    if( (i & 0xF0) == (0x20 | 0x00) )
+    if(sentido == 0)
     {
-        LCDbits.RS = 0;
-        LCDbits.BUS = i>>4;
-        LCDbits.EN = 0;
-        _delay((unsigned long)((40)*(4000000/4000000.0)));
-        LCDbits.EN = 1;
+        for(z = pulsos; z>0; z--)
+        {
+            char i = 0x01;
+
+            for(n=0; n<4; n++)
+            {
+                PORTD = i<<n;
+                _delay((unsigned long)((100)*(4000000/4000.0)));
+            }
+        }
     }
 
-
-    LCDbits.RS = 0;
-    LCDbits.BUS = i & 0x0F;
-    LCDbits.EN = 0;
-    if( i == 0x01 || i == 0x02 )
-        _delay((unsigned long)((2)*(4000000/4000.0)));
-    else
-        _delay((unsigned long)((40)*(4000000/4000000.0)));
-    LCDbits.EN = 1;
-}
-
-
-void dispLCD_dataReg( unsigned char d )
-{
-    LCDbits.RS = 1;
-    LCDbits.BUS = d >> 4;
-    LCDbits.EN = 0;
-    _delay((unsigned long)((40)*(4000000/4000000.0)));
-    LCDbits.EN = 1;
-
-    LCDbits.RS = 1;
-    LCDbits.BUS = d & 0x0F;
-    LCDbits.EN = 0;
-    _delay((unsigned long)((40)*(4000000/4000000.0)));
-    LCDbits.EN = 1;
-}
-
-
-void dispLCD_lincol( unsigned char lin, unsigned char col)
-{
-    dispLCD_instReg( (0x80+((0x40 * lin) + (col + 0x00) & 0x7F)) );
-}
-
-
-void dispLCD_init( void )
-{
-    TRISDbits.TRISD2 = 0;
-    TRISDbits.TRISD3 = 0;
-
-    TRISDbits.TRISD4 = 0;
-    TRISDbits.TRISD5 = 0;
-    TRISDbits.TRISD6 = 0;
-    TRISDbits.TRISD7 = 0;
-    ANSELH = 0;
-    TRISB = 0;
-    PORTB = 0;
-
-    LCDbits.EN = 1;
-    dispLCD_instReg( 0x20|0x00|0x08);
-    dispLCD_instReg( 0x08|0x04|0x00|0x00 );
-    dispLCD_instReg( 0x01 );
-    dispLCD_instReg( 0x02 );
-}
-
-
-void dispLCD_Texto( unsigned char lin, unsigned char col, const char *str )
-{
-    char pos = col;
-    dispLCD_lincol( lin, col );
-
-    while( *str )
+    if(sentido == 1)
     {
-        dispLCD_dataReg( *str );
-        ++str;
-        ++pos;
+        for(z = pulsos; z>0; z--)
+        {
+            char i = 0x08;
+
+            for(n=0; n<4; n++)
+            {
+                PORTD = i>>n;
+                _delay((unsigned long)((100)*(4000000/4000.0)));
+
+            }
+        }
     }
-}
-
-
-void dispLCD_num( unsigned char lin, unsigned char col,
-                    int num, unsigned char tam )
-{
-    int div;
-    unsigned char size;
-    char sinal;
-
-    sinal = num < 0;
-    if( sinal )
-        num = (~num) + 1;
-
-    dispLCD_lincol(lin, col);
-
-    div=10000;
-    size = 5;
-    while( div >= 1 )
-    {
-        if( num/div == 0 )
-            --size;
-        else
-            break;
-        div/=10;
-    }
-
-    while( tam > (size+sinal) && tam > 1 )
-    {
-        dispLCD_dataReg(' ');
-        --tam;
-    }
-
-    if( sinal )
-        dispLCD_dataReg('-');
-
-    do
-    {
-        dispLCD_dataReg( (num / div) + '0' );
-        num = num % div;
-        div/=10;
-    }
-    while( div >= 1 );
-}
-
-
-void dispLCD_clr( void )
-{
-    dispLCD_instReg(0x01);
 }
